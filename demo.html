@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>Gallery</title>
+        <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet"/>
+        <style>
+            *,
+            *::before,
+            *::after {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
+
+            :root {
+                --accent: #C1622F;
+                --accent-hover: #a8521f;
+                --text-dark: #1a1a1a;
+                --border: #d0cdc8;
+                --bg: #f9f8f6;
+                --btn-inactive-bg: #ffffff;
+                --btn-inactive-text: #333;
+            }
+
+            body {
+                font-family: 'Montserrat', sans-serif;
+                background: var(--bg);
+                color: var(--text-dark);
+                min-height: 100vh;
+            }
+
+            /* ── GALLERY SECTION ── */
+            .gallery-section {
+                padding: 60px 0 80px;
+                text-align: center;
+            }
+
+            .gallery-title {
+                font-family: 'Cormorant Garamond', serif;
+                font-size: clamp(1.6rem, 3vw, 2.4rem);
+                font-weight: 700;
+                letter-spacing: 0.18em;
+                text-transform: uppercase;
+                color: var(--text-dark);
+                margin-bottom: 28px;
+            }
+
+            /* ── TAB BUTTONS ── */
+            .tab-group {
+                display: inline-flex;
+                border: 1.5px solid var(--border);
+                border-radius: 0;
+                overflow: hidden;
+                margin-bottom: 40px;
+            }
+
+            .tab-btn {
+                padding: 10px 24px;
+                font-family: 'Montserrat', sans-serif;
+                font-size: 0.68rem;
+                font-weight: 600;
+                letter-spacing: 0.13em;
+                text-transform: uppercase;
+                cursor: pointer;
+                border: none;
+                outline: none;
+                transition: background 0.25s, color 0.25s;
+                background: var(--btn-inactive-bg);
+                color: var(--btn-inactive-text);
+            }
+
+            .tab-btn.active {
+                background: var(--accent);
+                color: #fff;
+            }
+
+            .tab-btn:not(.active):hover {
+                background: #f0ece8;
+            }
+
+            /* ── SLIDER WRAPPER ── */
+            .slider-outer {
+                position: relative;
+                width: 100%;
+                overflow: hidden;
+            }
+
+            .slider-track {
+                display: flex;
+                align-items: stretch;
+                transition: transform 0.55s cubic-bezier(0.77, 0, 0.175, 1);
+                will-change: transform;
+            }
+
+            /* ── SLIDE ── */
+            .slide {
+                flex: 0 0 100%;
+                width: 100%;
+                display: flex;
+                align-items: stretch;
+                gap: 0;
+            }
+
+            /* Side panels */
+            .slide-side {
+                flex: 0 0 clamp(100px, 18vw, 240px);
+                overflow: hidden;
+                position: relative;
+            }
+
+            .slide-side img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                display: block;
+                filter: brightness(0.88);
+                transition: filter 0.3s;
+            }
+
+            /* Main center panel */
+            .slide-main {
+                flex: 1 1 0;
+                overflow: hidden;
+                position: relative;
+            }
+
+            .slide-main img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                display: block;
+            }
+
+            /* Fallback placeholder when no real images */
+            .img-placeholder {
+                width: 100%;
+                height: 380px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-family: 'Cormorant Garamond', serif;
+                font-size: 1.1rem;
+                letter-spacing: 0.06em;
+                color: rgba(255, 255, 255, 0.7);
+            }
+
+            /* ── NAVIGATION ARROWS ── */
+            .slider-nav {
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+                gap: 12px;
+                padding: 18px 32px 0;
+            }
+
+            .nav-btn {
+                width: 36px;
+                height: 36px;
+                background: none;
+                border: none;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #555;
+                transition: color 0.2s, transform 0.2s;
+                padding: 0;
+            }
+
+            .nav-btn:hover {
+                color: var(--accent);
+                transform: scale(1.15);
+            }
+
+            .nav-btn svg {
+                width: 20px;
+                height: 20px;
+                stroke-width: 1.6;
+            }
+
+            /* ── RESPONSIVE ── */
+            @media(max-width: 900px) {
+                .slide-side {
+                    flex: 0 0 clamp(60px, 12vw, 130px);
+                }
+                .img-placeholder {
+                    height: 280px;
+                }
+            }
+
+            @media(max-width: 600px) {
+                .gallery-section {
+                    padding: 40px 0 60px;
+                }
+                .tab-btn {
+                    padding: 9px 16px;
+                    font-size: 0.6rem;
+                }
+                .slide-side {
+                    display: none;
+                }
+                .img-placeholder {
+                    height: 220px;
+                }
+                .slider-nav {
+                    padding: 14px 20px 0;
+                }
+            }
+
+            /* ── PLACEHOLDER COLORS per project ── */
+            .rhythm .slide-main .img-placeholder {
+                /* background: #3a5a6a; */
+                background-image: url(./Images/our-philosophy-img-1.png);
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover  ;
+            }
+            .rhythm .slide-side:first-child .img-placeholder {
+                /* background: #4d7080; */
+                background-image: url(./Images/our-philosophy-img-1.png);
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover  ;
+            }
+            .rhythm .slide-side:last-child .img-placeholder {
+                /* background: #2e4a58; */
+                
+                background-image: url(./Images/our-philosophy-img-1.png);
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover  ;
+            }
+
+            .apartment .slide-main .img-placeholder {
+                background: #5a4a3a;
+            }
+            .apartment .slide-side:first-child .img-placeholder {
+                background: #7a6250;
+            }
+            .apartment .slide-side:last-child .img-placeholder {
+                background: #4a3828;
+            }
+        </style>
+    </head>
+    <body>
+
+        <section class="gallery-section">
+            <h2 class="gallery-title">Gallery</h2>
+
+            <!-- Tab Buttons -->
+            <div class="tab-group">
+                <button class="tab-btn active" data-tab="rhythm">Rhythm of Earth</button>
+                <button class="tab-btn" data-tab="apartment">Apartment Project</button>
+            </div>
+
+            <!-- ── RHYTHM OF EARTH SLIDER ── -->
+            <div class="slider-outer" id="rhythm-slider">
+                <div
+                    class="slider-track" id="rhythm-track">
+
+                    <!-- Slide 1 -->
+                    <div class="slide rhythm">
+                        <div class="slide-side">
+                            <div class="img-placeholder"></div>
+                        </div>
+                        <div class="slide-main">
+                            <div class="img-placeholder"></div>
+                        </div>
+                        <div class="slide-side">
+                            <div class="img-placeholder"></div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 2 -->
+                    <div class="slide rhythm">
+                        <div class="slide-side">
+                            <div class="img-placeholder">Pool Deck</div>
+                        </div>
+                        <div class="slide-main">
+                            <div class="img-placeholder">Courtyard — Rhythm of Earth</div>
+                        </div>
+                        <div class="slide-side">
+                            <div class="img-placeholder">Entrance Gate</div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 3 -->
+                    <div class="slide rhythm">
+                        <div class="slide-side">
+                            <div class="img-placeholder">Terrace</div>
+                        </div>
+                        <div class="slide-main">
+                            <div class="img-placeholder">Sunset View — Rhythm of Earth</div>
+                        </div>
+                        <div class="slide-side">
+                            <div class="img-placeholder">Landscaping</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- ── APARTMENT PROJECT SLIDER ── -->
+            <div class="slider-outer" id="apartment-slider" style="display:none;">
+                <div
+                    class="slider-track" id="apartment-track">
+
+                    <!-- Slide 1 -->
+                    <div class="slide apartment">
+                        <div class="slide-side">
+                            <div class="img-placeholder">Block A</div>
+                        </div>
+                        <div class="slide-main">
+                            <div class="img-placeholder">Tower Front — Apartment Project</div>
+                        </div>
+                        <div class="slide-side">
+                            <div class="img-placeholder">Block B</div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 2 -->
+                    <div class="slide apartment">
+                        <div class="slide-side">
+                            <div class="img-placeholder">Lobby</div>
+                        </div>
+                        <div class="slide-main">
+                            <div class="img-placeholder">Amenity Deck — Apartment Project</div>
+                        </div>
+                        <div class="slide-side">
+                            <div class="img-placeholder">Corridor</div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 3 -->
+                    <div class="slide apartment">
+                        <div class="slide-side">
+                            <div class="img-placeholder">Unit Interior</div>
+                        </div>
+                        <div class="slide-main">
+                            <div class="img-placeholder">Rooftop View — Apartment Project</div>
+                        </div>
+                        <div class="slide-side">
+                            <div class="img-placeholder">Car Park</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Navigation Arrows -->
+            <div class="slider-nav">
+                <button class="nav-btn" id="prev-btn" aria-label="Previous">
+                    <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <polyline points="15 18 9 12 15 6"/>
+                    </svg>
+                </button>
+                <button class="nav-btn" id="next-btn" aria-label="Next">
+                    <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <polyline points="9 6 15 12 9 18"/>
+                    </svg>
+                </button>
+            </div>
+        </section>
+
+        <script>
+            const tabs = document.querySelectorAll('.tab-btn');
+            const sliders = {
+                rhythm: document.getElementById('rhythm-slider'),
+                apartment: document.getElementById('apartment-slider')
+            };
+            const tracks = {
+                rhythm: document.getElementById('rhythm-track'),
+                apartment: document.getElementById('apartment-track')
+            };
+
+            let activeTab = 'rhythm';
+            let indices = {
+                rhythm: 0,
+                apartment: 0
+            };
+
+            function slideTo(tab, idx) {
+                const slides = tracks[tab].querySelectorAll('.slide');
+                const count = slides.length;
+                indices[tab] = (idx + count) % count;
+                tracks[tab].style.transform = `translateX(-${
+                    indices[tab] * 100
+                }%)`;
+            }
+
+            tabs.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const tab = btn.dataset.tab;
+                    if (tab === activeTab) 
+                        return;
+                    
+
+                    // Swap active tab styling
+                    tabs.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+
+                    // Swap visible slider
+                    sliders[activeTab].style.display = 'none';
+                    sliders[tab].style.display = 'block';
+
+                    activeTab = tab;
+                });
+            });
+
+            document.getElementById('prev-btn').addEventListener('click', () => {
+                slideTo(activeTab, indices[activeTab] - 1);
+            });
+
+            document.getElementById('next-btn').addEventListener('click', () => {
+                slideTo(activeTab, indices[activeTab] + 1);
+            });
+
+            // Touch / swipe support
+            let touchStartX = 0;
+            Object.values(sliders).forEach(slider => {
+                slider.addEventListener('touchstart', e => {
+                    touchStartX = e.touches[0].clientX;
+                }, {passive: true});
+                slider.addEventListener('touchend', e => {
+                    const dx = e.changedTouches[0].clientX - touchStartX;
+                    if (Math.abs(dx) > 40) {
+                        dx < 0 ? slideTo(activeTab, indices[activeTab] + 1) : slideTo(activeTab, indices[activeTab] - 1);
+                    }
+                }, {passive: true});
+            });
+        </script>
+    </body>
+</html>

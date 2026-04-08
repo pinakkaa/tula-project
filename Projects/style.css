@@ -1,0 +1,211 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  font-family: "Montserrat", sans-serif;
+  background: linear-gradient(#F8EAD6, #F9E3C6);
+}
+
+.main-container{
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+
+/* NAVBAR */
+.tula-navbar {
+  width: 100%;
+  background: #f8e9d4;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+}
+
+.tula-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* LOGO */
+.tula-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logo-icon {
+  font-size: 24px;
+  color: #8c5120;
+}
+.nav-logo {
+  width: 151px;
+  max-height: 95px;
+}
+/* NAV LINKS */
+.tula-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 70px;
+}
+.tula-nav-links {
+  display: flex;
+  list-style: none;
+  gap: 30px;
+}
+
+.tula-nav-links a {
+  text-decoration: none;
+  color: #333;
+  font-size: 14px;
+  letter-spacing: 1px;
+  transition: 0.3s;
+}
+
+.tula-nav-links a:hover {
+  color: #8c5120;
+}
+
+/* BUTTON */
+.tula-btn {
+  background: #8c5120;
+  color: #fff;
+  padding: 10px 20px;
+  text-decoration: none;
+  font-size: 13px;
+  letter-spacing: 1px;
+  transition: 0.3s;
+}
+
+.tula-btn:hover {
+  opacity: 0.8;
+}
+
+/* HAMBURGER */
+.tula-hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+}
+
+.tula-hamburger span {
+  width: 25px;
+  height: 3px;
+  background: #000;
+  transition: 0.3s;
+}
+
+/* MOBILE MENU */
+@media (max-width: 992px) {
+  .tula-nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: #f8e9d4;
+    max-height: 0;
+    overflow: hidden;
+    transition: 0.4s ease;
+  }
+
+  .tula-nav.active {
+    max-height: 300px;
+  }
+
+  .tula-nav-links {
+    flex-direction: column;
+    padding: 20px;
+    gap: 15px;
+  }
+
+  .tula-contact {
+    display: none;
+  }
+
+  .tula-hamburger {
+    display: flex;
+  }
+}
+
+/* HAMBURGER ANIMATION */
+.tula-hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.tula-hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.tula-hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+
+/* Hero Section  */
+
+.hero-section{
+    width: 100%;
+    height: 100vh;
+    background-image: url(./Images/Banner.png);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+/* About Section  */
+
+.about-section{
+    width: 100%;
+    padding: 120px 0;
+}
+.about-section-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+}
+.about-image-wrapper{
+    width: 636px;
+    height: 485px;
+}
+.about-image{
+    height: 100%;
+    width: 100%;
+}
+.about-section-content-wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    gap: 1rem;
+}
+.about-title-wrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.about-title-wrapper-left{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    gap: 0.4rem;
+}
+.about-sub-title{
+     
+}

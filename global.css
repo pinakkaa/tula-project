@@ -1,0 +1,795 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body, html{
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    font-family: "Montserrat", sans-serif;
+}
+.main-container{
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+}
+.sub-title{
+    font-family: "Montserrat", sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 17.6px;
+    letter-spacing: 60%;
+    color: #DB7D3F;
+}
+.section-title{
+    font-family: "Montserrat", sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 33px;
+    letter-spacing: 0%;
+    color: #1F1F1F;
+}
+.section-title-big{
+    font-family: "Montserrat", sans-serif;
+    font-size: 45px;
+    font-weight: 700;
+    line-height: 33px;
+    letter-spacing: 10%;
+    text-transform: uppercase;
+    color: #1F1F1F;
+}
+.section-para{
+    font-family: "Montserrat", sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 22px;
+    letter-spacing: 3%;
+    color: #1F1F1F;
+}
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+/* =========================
+HERO SECTION
+========================= */
+.hero {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    background: url("./Images/hero-bg.png") center center / cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.18);
+    z-index: 1;
+}
+
+/* =========================
+NAVBAR
+========================= */
+.navbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1200;
+    padding: 28px 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: white;
+}
+
+.nav-left,
+.nav-center,
+.nav-right {
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+.nav-left {
+    justify-content: flex-start;
+}
+
+.nav-center {
+    justify-content: center;
+}
+
+.nav-right {
+    justify-content: flex-end;
+}
+
+/* =========================
+HAMBURGER / X ICON
+========================= */
+.menu-toggle {
+    width: 42px;
+    height: 42px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+    position: fixed;
+    top: 28px;
+    left: 50px;
+    z-index: 1301;
+    transition: all 0.4s ease;
+}
+
+.menu-toggle span {
+    display: block;
+    width: 26px;
+    height: 2px;
+    background: white;
+    border-radius: 10px;
+    transition: all 0.4s ease;
+    transform-origin: center;
+}
+
+.menu-toggle:hover span {
+    width: 32px;
+}
+
+/* When menu opens => move icon to right edge of white menu */
+.menu-toggle.active {
+    left: calc(25% - 60px);
+}
+
+/* black color on white bg */
+.menu-toggle.active span {
+    background: #111;
+}
+
+.menu-toggle.active span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+    width: 30px;
+}
+
+.menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+    transform: translateX(-20px);
+}
+
+.menu-toggle.active span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+    width: 30px;
+}
+
+/* =========================
+LOGO
+========================= */
+.logo {
+    text-align: center;
+    color: white;
+    line-height: 1.1;
+    user-select: none;
+    z-index: 1201;
+    max-height: 100px;
+    max-width: 180px;
+}
+.center-logo{
+    height: 80px;
+    width: 150px;
+}
+
+.logo-symbol {
+    font-size: 42px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.logo-text {
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-top: 2px;
+    opacity: 0.95;
+}
+
+/* =========================
+BOOK BUTTON
+========================= */
+.book-btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 24px;
+    background: rgba(255, 255, 255, 0.92);
+    color: #111;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    overflow: hidden;
+    transition: all 0.35s ease;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    z-index: 1201;
+}
+
+.book-btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: #111;
+    transition: left 0.4s ease;
+    z-index: 0;
+}
+
+.book-btn span {
+    position: relative;
+    z-index: 1;
+    transition: color 0.35s ease;
+}
+
+.book-btn:hover::before {
+    left: 0;
+}
+
+.book-btn:hover span {
+    color: white;
+}
+
+.book-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+}
+
+/* =========================
+SIDE MENU
+========================= */
+.side-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 25%;
+    min-width: 280px;
+    max-width: 420px;
+    height: 100vh;
+    background: white;
+    z-index: 1250;
+    transform: translateX(-100%);
+    transition: transform 0.55s cubic-bezier(0.77, 0, 0.175, 1);
+    padding: 120px 45px 50px;
+    box-shadow: 20px 0 60px rgba(0, 0, 0, 0.12);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.side-menu.active {
+    transform: translateX(0);
+    z-index: 1000;
+}
+
+.menu-links {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+.menu-links a {
+    position: relative;
+    font-size: 28px;
+    color: #111;
+    font-weight: 500;
+    width: fit-content;
+    transition: all 0.3s ease;
+}
+
+.menu-links a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 0;
+    height: 2px;
+    background: #111;
+    transition: width 0.35s ease;
+}
+
+.menu-links a:hover::after {
+    width: 100%;
+}
+
+.menu-links a:hover {
+    transform: translateX(8px);
+}
+
+.menu-footer {
+    color: #555;
+    font-size: 14px;
+    line-height: 1.8;
+    margin-top: 50px;
+}
+
+/* =========================
+OVERLAY
+========================= */
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s ease;
+    z-index: 900;
+    backdrop-filter: blur(2px);
+}
+
+.overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* =========================
+HERO CONTENT
+========================= */
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: white;
+    padding: 0 20px;
+}
+
+/* =========================
+RESPONSIVE
+========================= */
+@media(max-width: 1200px) {
+    .side-menu {
+        width: 35%;
+    }
+
+    .hero-content h1 {
+        font-size: 54px;
+    }
+    .menu-toggle.active {
+        left: calc(35% - 60px);
+    }
+}
+
+@media(max-width: 992px) {
+    .navbar {
+        padding: 24px 28px;
+    }
+
+    .side-menu {
+        width: 45%;
+    }
+
+    .logo-symbol {
+        font-size: 34px;
+    }
+
+    .menu-links a {
+        font-size: 24px;
+    }
+}
+
+@media(max-width: 768px) {
+    .navbar {
+        padding: 20px 18px;
+    }
+
+    .side-menu {
+        width: 75%;
+        min-width: unset;
+        max-width: unset;
+        padding: 110px 28px 40px;
+    }
+
+    .logo-symbol {
+        font-size: 28px;
+    }
+
+    .logo-text {
+        font-size: 10px;
+        letter-spacing: 2px;
+    }
+
+    .book-btn {
+        padding: 10px 16px;
+        font-size: 11px;
+    }
+
+    .menu-links a {
+        font-size: 22px;
+    }
+    .menu-toggle {
+        top: 20px;
+        left: 18px;
+    }
+
+    .menu-toggle.active {
+        left: calc(75% - 55px);
+    }
+}
+
+@media(max-width: 480px) {
+    .navbar {
+        padding: 18px 14px;
+    }
+
+    .side-menu {
+        width: 85%;
+    }
+
+    .menu-toggle span {
+        width: 22px;
+    }
+
+    .book-btn {
+        padding: 9px 14px;
+        font-size: 10px;
+    }
+
+    .menu-links a {
+        font-size: 20px;
+    }
+    .menu-toggle {
+        top: 18px;
+        left: 14px;
+    }
+
+    .menu-toggle.active {
+        left: calc(85% - 50px);
+    }
+}
+
+
+
+
+
+/* Footer Section */
+
+
+.luxury-footer {
+    position: relative;
+    background: linear-gradient(135deg, #c6854d, #9b673f);
+    color: #fff;
+    overflow: hidden;
+  }
+
+  /* Pattern background */
+  .luxury-footer::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 25% 25%, rgba(255,255,255,0.05) 2px, transparent 2px),
+      radial-gradient(circle at 75% 75%, rgba(255,255,255,0.04) 2px, transparent 2px);
+    background-size: 120px 120px;
+    opacity: 0.25;
+    pointer-events: none;
+  }
+
+  .footer-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.05);
+    z-index: 0;
+  }
+
+  .footer-container {
+    position: relative;
+    z-index: 1;
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 70px 50px 50px;
+    display: grid;
+    grid-template-columns: 1.2fr 1.5fr 1fr 1.6fr;
+    gap: 60px;
+    align-items: start;
+  }
+
+  /* Logo */
+  .footer-logo-col {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .footer-logo {
+    text-align: center;
+  }
+
+  .footer-logo img {
+    width: 90px;
+    height: 90px;
+    object-fit: contain;
+    margin-bottom: 15px;
+    filter: brightness(0) invert(1);
+  }
+
+  .footer-logo h2 {
+    font-size: 34px;
+    letter-spacing: 6px;
+    font-weight: 500;
+    margin-bottom: 5px;
+  }
+
+  .footer-logo p {
+    font-size: 14px;
+    letter-spacing: 4px;
+    font-weight: 400;
+  }
+
+  /* Headings */
+  .footer-col h3 {
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 22px;
+    color: #fff;
+  }
+
+  /* Corporate */
+  .footer-address,
+  .footer-email,
+  .footer-contact {
+    font-size: 14px;
+    line-height: 1.9;
+    color: rgba(255,255,255,0.92);
+  }
+
+  .footer-contact {
+    margin: 18px 0 10px;
+    font-size: 22px;
+    font-weight: 400;
+  }
+
+  .footer-contact span {
+    margin-right: 8px;
+  }
+
+  .footer-email a {
+    color: rgba(255,255,255,0.95);
+    text-decoration: none;
+  }
+
+  .footer-email a:hover {
+    text-decoration: underline;
+  }
+
+  /* Links */
+  .footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .footer-links li {
+    margin-bottom: 10px;
+  }
+
+  .footer-links a {
+    color: rgba(255,255,255,0.92);
+    text-decoration: none;
+    font-size: 14px;
+    transition: 0.3s ease;
+  }
+
+  .footer-links a:hover {
+    color: #fff;
+    padding-left: 4px;
+  }
+
+  /* Form */
+  .footer-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .footer-form input,
+  .footer-form textarea {
+    width: 100%;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.35);
+    color: #fff;
+    padding: 12px 14px;
+    font-size: 13px;
+    outline: none;
+    transition: 0.3s ease;
+  }
+
+  .footer-form input::placeholder,
+  .footer-form textarea::placeholder {
+    color: rgba(255,255,255,0.65);
+  }
+
+  .footer-form input:focus,
+  .footer-form textarea:focus {
+    border-color: #fff;
+    background: rgba(255,255,255,0.08);
+  }
+
+  .footer-form textarea {
+    resize: none;
+    min-height: 85px;
+  }
+
+  .form-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 8px;
+    gap: 15px;
+  }
+
+  .footer-form button {
+    background: #fff;
+    color: #8b5c35;
+    border: none;
+    padding: 12px 26px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: 0.3s ease;
+  }
+
+  .footer-form button:hover {
+    background: #f1f1f1;
+    transform: translateY(-2px);
+  }
+
+  /* Socials */
+  .footer-socials {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .footer-socials a {
+    color: #fff;
+    font-size: 16px;
+    text-decoration: none;
+    opacity: 0.85;
+    transition: 0.3s ease;
+  }
+
+  .footer-socials a:hover {
+    opacity: 1;
+    transform: translateY(-2px);
+  }
+
+  /* Bottom */
+  .footer-bottom {
+    position: relative;
+    z-index: 1;
+    border-top: 1px solid rgba(255,255,255,0.35);
+    text-align: center;
+    padding: 20px 15px;
+  }
+
+  .footer-bottom p {
+    font-size: 13px;
+    color: rgba(255,255,255,0.88);
+    line-height: 1.8;
+  }
+
+  .footer-bottom a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .footer-bottom a:hover {
+    text-decoration: underline;
+  }
+
+  /* =========================
+     RESPONSIVE
+  ========================= */
+
+  @media (max-width: 1200px) {
+    .footer-container {
+      grid-template-columns: 1fr 1.3fr 1fr 1.4fr;
+      gap: 40px;
+      padding: 60px 35px 45px;
+    }
+  }
+
+  @media (max-width: 992px) {
+    .footer-container {
+      grid-template-columns: 1fr 1fr;
+      gap: 45px 35px;
+      padding: 55px 30px 40px;
+    }
+
+    .footer-logo-col {
+      justify-content: flex-start;
+    }
+
+    .footer-logo {
+      text-align: left;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .footer-container {
+      grid-template-columns: 1fr;
+      gap: 35px;
+      padding: 50px 20px 35px;
+    }
+
+    .footer-logo-col {
+      justify-content: center;
+    }
+
+    .footer-logo {
+      text-align: center;
+    }
+
+    .footer-col h3 {
+      margin-bottom: 16px;
+    }
+
+    .form-bottom {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .footer-form button {
+      width: 100%;
+      text-align: center;
+    }
+
+    .footer-socials {
+      justify-content: flex-start;
+    }
+
+    .footer-bottom p {
+      font-size: 12px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .footer-logo h2 {
+      font-size: 28px;
+      letter-spacing: 5px;
+    }
+
+    .footer-logo p {
+      font-size: 12px;
+      letter-spacing: 3px;
+    }
+
+    .footer-contact {
+      font-size: 18px;
+    }
+
+    .footer-address,
+    .footer-email,
+    .footer-links a {
+      font-size: 13px;
+    }
+
+    .footer-form input,
+    .footer-form textarea {
+      font-size: 12px;
+      padding: 11px 12px;
+    }
+  }
