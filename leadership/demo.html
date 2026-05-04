@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tula Properties Navbar</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500;600&display=swap"
+    rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: #F8EAD6;
+      /* min-height: 100vh; */
+    }
+
+    /* ─── NAVBAR ─── */
+    .navbar {
+      position: relative;
+      width: 100%;
+      height: 80px;
+      background: linear-gradient(180deg, #F9E8D2 0%, #F9E8D200 100%);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 32px;
+      border-bottom: 1px solid rgba(180, 120, 40, 0.2);
+      z-index: 1000;
+    }
+
+    /* ─── HAMBURGER ─── */
+    .hamburger {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 8px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 28px;
+      height: 2px;
+      background: #c8892e;
+      transition: all 0.3s ease;
+    }
+
+    /* ─── LOGO ─── */
+    .logo {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+    }
+
+    .logo svg {
+      width: 42px;
+      height: 42px;
+    }
+
+    .logo-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 13px;
+      letter-spacing: 5px;
+      color: #c8892e;
+      font-weight: 500;
+      line-height: 1;
+    }
+
+    .logo-sub {
+      font-size: 7px;
+      letter-spacing: 4px;
+      color: #a07030;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 400;
+    }
+
+    /* ─── BOOK NOW BUTTON ─── */
+    .book-btn {
+      background: transparent;
+      border: 1px solid #c8892e;
+      color: #c8892e;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      letter-spacing: 3px;
+      padding: 10px 20px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    .book-btn:hover {
+      background: #c8892e;
+      color: #0d0d0d;
+    }
+
+    /* ─── OVERLAY ─── */
+    .overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 900;
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    .overlay.active {
+      display: block;
+    }
+
+    /* ─── MENU PANEL (left 20%) ─── */
+    .menu-panel {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 20%;
+      min-width: 220px;
+      height: 100vh;
+      background: #ffffff;
+      z-index: 950;
+      transform: translateX(-100%);
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      flex-direction: column;
+      padding: 40px 32px;
+    }
+
+    .menu-panel.open {
+      transform: translateX(0);
+    }
+
+    .menu-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 40px;
+    }
+
+    .menu-label {
+      font-size: 10px;
+      letter-spacing: 3px;
+      color: #888;
+      font-weight: 500;
+      text-transform: uppercase;
+    }
+
+    .close-btn {
+      background: none;
+      border: none;
+      font-size: 22px;
+      color: #333;
+      cursor: pointer;
+      line-height: 1;
+      padding: 4px;
+      transition: color 0.2s;
+    }
+
+    .close-btn:hover {
+      color: #c8892e;
+    }
+
+    /* ─── MENU NAV LINKS ─── */
+    .menu-nav {
+      list-style: none;
+      flex: 1;
+    }
+
+    .menu-nav li {
+      border-bottom: 1px solid #f0ede8;
+    }
+
+    .menu-nav li a,
+    .menu-nav li .nav-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 0;
+      font-size: 12px;
+      letter-spacing: 3px;
+      color: #2a2a2a;
+      text-decoration: none;
+      font-weight: 500;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: color 0.2s;
+      user-select: none;
+    }
+
+    .menu-nav li a:hover,
+    .menu-nav li .nav-item:hover {
+      color: #c8892e;
+    }
+
+    .arrow-icon {
+      font-size: 16px;
+      color: #2a2a2a;
+      transition: color 0.2s, transform 0.2s;
+    }
+
+    .menu-nav li .nav-item:hover .arrow-icon {
+      color: #c8892e;
+      transform: translateX(3px);
+    }
+
+    /* ─── SUB PANEL (brown) ─── */
+    .sub-panel {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 260px;
+      height: 100vh;
+      background: #7a3b10;
+      z-index: 940;
+      transform: translateX(-110%);
+      visibility: hidden;
+      transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), visibility 0s linear 0.35s;
+      padding: 60px 32px 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .sub-panel.open {
+      transform: translateX(calc(20vw));
+      visibility: visible;
+      transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), visibility 0s linear 0s;
+    }
+
+    .sub-group {
+      margin-bottom: 32px;
+    }
+
+    .sub-group-title {
+      font-size: 12px;
+      letter-spacing: 2px;
+      color: #ffffff;
+      font-weight: 600;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .sub-group ul {
+      list-style: none;
+    }
+
+    .sub-group ul li a {
+      display: block;
+      padding: 8px 0;
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.75);
+      text-decoration: none;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 400;
+      letter-spacing: 0.5px;
+      transition: color 0.2s;
+    }
+
+    .sub-group ul li a:hover {
+      color: #ffffff;
+    }
+
+    /* ─── PAGE BACKGROUND (demo) ─── */
+    .page-bg {
+      width: 100%;
+      height: calc(100vh - 80px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(ellipse at center, #2a1a05 0%, #0d0d0d 70%);
+      color: rgba(200, 137, 46, 0.15);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 120px;
+      letter-spacing: 20px;
+      user-select: none;
+    }
+
+
+    @media(max-width: 992px) {
+
+      .sub-panel {
+        width: 300px;
+        padding-left: 10rem;
+      }
+
+      .book-btn {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ─── NAVBAR ─── -->
+  <nav class="navbar">
+
+    <!-- Hamburger -->
+    <div class="hamburger" id="hamburgerBtn">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <!-- Logo -->
+    <div class="logo">
+      <img src="../Images/logo.png" alt="" height="70" width="120">
+    </div>
+
+    <!-- Book Now -->
+    <button class="book-btn">BOOK NOW</button>
+
+  </nav>
+
+  <!-- ─── OVERLAY ─── -->
+  <div class="overlay" id="overlay"></div>
+
+  <!-- ─── LEFT MENU PANEL ─── -->
+  <div class="menu-panel" id="menuPanel">
+    <div class="menu-header">
+      <span class="menu-label">Menu</span>
+      <button class="close-btn" id="closeBtn">&#x2715;</button>
+    </div>
+
+    <ul class="menu-nav">
+      <li>
+        <div class="nav-item" id="whoWeAre">
+          WHO WE ARE
+          <span class="arrow-icon">&#8594;</span>
+        </div>
+      </li>
+      <li>
+        <a href="#">PROJECTS</a>
+      </li>
+      <li>
+        <a href="#">BLOGS</a>
+      </li>
+      <li>
+        <a href="#">CAREERS</a>
+      </li>
+      <li>
+        <a href="#">CONTACT US</a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- ─── SUB PANEL (brown dropdown) ─── -->
+  <div class="sub-panel" id="subPanel">
+    <div class="sub-group">
+      <div class="sub-group-title">Philosophy</div>
+      <ul>
+        <li><a href="#">SOIL</a></li>
+        <li><a href="#">Eco – Urbanity</a></li>
+        <li><a href="#">Design Prospects</a></li>
+      </ul>
+    </div>
+    <div class="sub-group">
+      <div class="sub-group-title">Leadership</div>
+      <ul>
+        <li><a href="#">Tula Journey</a></li>
+        <li><a href="#">About Founder</a></li>
+        <li><a href="#">Leadership Team</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ─── PAGE CONTENT (demo background) ─── -->
+  <!-- <div class="page-bg">TULA</div> -->
+
+  <!-- ─── JAVASCRIPT ─── -->
+  <script>
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const overlay = document.getElementById('overlay');
+    const menuPanel = document.getElementById('menuPanel');
+    const subPanel = document.getElementById('subPanel');
+    const closeBtn = document.getElementById('closeBtn');
+    const whoWeAre = document.getElementById('whoWeAre');
+
+    // Open menu
+    function openMenu() {
+      menuPanel.classList.add('open');
+      overlay.classList.add('active');
+    }
+
+    // Close everything
+    function closeAll() {
+      menuPanel.classList.remove('open');
+      subPanel.classList.remove('open');
+      overlay.classList.remove('active');
+    }
+
+    // Events
+    hamburgerBtn.addEventListener('click', openMenu);
+    closeBtn.addEventListener('click', closeAll);
+    overlay.addEventListener('click', closeAll);
+
+    // Show sub panel on hover over "WHO WE ARE"
+    whoWeAre.addEventListener('mouseenter', () => {
+      subPanel.classList.add('open');
+    });
+
+    // Hide sub panel when mouse leaves both panels
+    menuPanel.addEventListener('mouseleave', (e) => {
+      if (!subPanel.contains(e.relatedTarget)) {
+        subPanel.classList.remove('open');
+      }
+    });
+
+    subPanel.addEventListener('mouseleave', (e) => {
+      if (!menuPanel.contains(e.relatedTarget)) {
+        subPanel.classList.remove('open');
+      }
+    });
+  </script>
+
+</body>
+
+</html>

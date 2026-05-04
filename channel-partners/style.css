@@ -1,0 +1,307 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    font-family: "Montserrat", sans-serif;
+    background: linear-gradient(#f8ead6, #f9e3c6);
+  }
+  
+  .main-container {
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  
+  /* Hero Section  */
+  
+  .hero-section {
+    background-image: url(./Images/channel-partners.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100vw;
+    height: 90vh;
+  }
+
+
+  /* ════════════════════════════════
+       SECTION 1 — CHANNEL PARTNER ECOSYSTEM
+    ════════════════════════════════ */
+    .channel-section {
+        background-color: #f5e6d0;
+        padding: 60px 80px;
+        text-align: center;
+      }
+   
+      .channel-section h2 {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 28px;
+        font-weight: 500;
+        color: #8b4513;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        margin-bottom: 18px;
+      }
+   
+      .channel-section .intro {
+        font-size: 13.5px;
+        font-weight: 300;
+        color: #3d2b1a;
+        line-height: 1.85;
+        max-width: 680px;
+        margin: 0 auto 52px;
+      }
+   
+      .why-title {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 22px;
+        font-weight: 400;
+        color: #3d2b1a;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        margin-bottom: 32px;
+      }
+   
+      /* Cards grid */
+      .cards-grid {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 14px;
+      }
+   
+      .cards-row {
+        display: flex;
+        justify-content: center;
+        gap: 14px;
+      }
+   
+      .partner-card {
+        background-color: #8b4513;
+        width: 190px;
+        height: 140px;
+        border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 14px;
+        padding: 18px 14px;
+      }
+   
+      .partner-card svg {
+        width: 40px;
+        height: 40px;
+        stroke: #f5e6d0;
+        fill: none;
+        stroke-width: 1.4;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        flex-shrink: 0;
+      }
+   
+      .partner-card span {
+        font-size: 12px;
+        font-weight: 300;
+        color: #f5e6d0;
+        line-height: 1.5;
+        text-align: center;
+        letter-spacing: 0.02em;
+      }
+   
+      /* ════════════════════════════════
+         SECTION 2 — REGISTER AS PREFERRED PARTNER
+      ════════════════════════════════ */
+      .register-section {
+        background-color: #f5e6d0;
+        padding: 60px 80px 70px;
+        text-align: center;
+      }
+   
+      .register-section h2 {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 26px;
+        font-weight: 400;
+        color: #8b4513;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        margin-bottom: 28px;
+      }
+   
+      .register-form {
+        max-width: 540px;
+        margin: 0 auto;
+        text-align: left;
+      }
+   
+      .reg-row {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 10px;
+      }
+   
+      .reg-row.single {
+        flex-direction: column;
+      }
+   
+      .reg-row input[type="text"],
+      .reg-row input[type="email"],
+      .reg-row input[type="tel"],
+      .reg-row input[type="date"],
+      .reg-row input[type="url"] {
+        flex: 1;
+        background: #ffffff;
+        border: 1px solid #ddc9b0;
+        padding: 12px 14px;
+        font-family: 'Jost', sans-serif;
+        font-size: 13px;
+        font-weight: 300;
+        color: #3d2b1a;
+        outline: none;
+        transition: border-color 0.2s;
+        width: 100%;
+      }
+   
+      .reg-row input::placeholder {
+        color: #b89878;
+      }
+   
+      .reg-row input:focus {
+        border-color: #8b4513;
+      }
+   
+      /* File upload row */
+      .file-row {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 10px;
+        align-items: stretch;
+      }
+   
+      .file-row input[type="text"] {
+        flex: 1;
+        background: #ffffff;
+        border: 1px solid #ddc9b0;
+        padding: 12px 14px;
+        font-family: 'Jost', sans-serif;
+        font-size: 13px;
+        font-weight: 300;
+        color: #3d2b1a;
+        outline: none;
+      }
+   
+      .file-group {
+        display: flex;
+        flex: 1;
+        border: 1px solid #ddc9b0;
+        overflow: hidden;
+        background: #ffffff;
+      }
+   
+      .file-group label {
+        background: #8b4513;
+        color: #fff8f0;
+        padding: 12px 14px;
+        font-size: 12px;
+        font-weight: 400;
+        letter-spacing: 0.04em;
+        cursor: pointer;
+        white-space: nowrap;
+        display: flex;
+        align-items: center;
+      }
+   
+      .file-group input[type="file"] {
+        display: none;
+      }
+   
+      .file-group .file-label {
+        padding: 12px 12px;
+        font-size: 12px;
+        font-weight: 300;
+        color: #b89878;
+        display: flex;
+        align-items: center;
+      }
+   
+      /* Privacy checkbox */
+      .privacy-row {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin: 16px 0 20px;
+      }
+   
+      .privacy-row input[type="checkbox"] {
+        accent-color: #8b4513;
+        width: 14px;
+        height: 14px;
+        cursor: pointer;
+        flex-shrink: 0;
+      }
+   
+      .privacy-row label {
+        font-size: 12.5px;
+        font-weight: 300;
+        color: #3d2b1a;
+        cursor: pointer;
+      }
+   
+      .privacy-row label a {
+        color: #8b4513;
+        text-decoration: underline;
+      }
+   
+      /* Submit */
+      .btn-submit-reg {
+        display: block;
+        margin: 0 auto;
+        background: #8b4513;
+        border: none;
+        color: #fff8f0;
+        padding: 13px 52px;
+        font-family: 'Jost', sans-serif;
+        font-size: 12.5px;
+        font-weight: 400;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: background 0.25s;
+      }
+   
+      .btn-submit-reg:hover {
+        background: #6b340f;
+      }
+   
+      /* Toast */
+      .toast {
+        position: fixed;
+        bottom: 28px;
+        right: 28px;
+        background: #5c2e08;
+        color: #fff8f0;
+        padding: 13px 22px;
+        font-family: 'Jost', sans-serif;
+        font-size: 13px;
+        opacity: 0;
+        transform: translateY(10px);
+        transition: opacity 0.3s, transform 0.3s;
+        pointer-events: none;
+        z-index: 999;
+      }
+      .toast.show { opacity: 1; transform: translateY(0); }
+   
+      @media (max-width: 680px) {
+        .channel-section, .register-section { padding: 40px 20px; }
+        .cards-row { flex-wrap: wrap; }
+        .partner-card { width: 150px; height: 130px; }
+        .reg-row, .file-row { flex-direction: column; }
+      }

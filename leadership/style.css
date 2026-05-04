@@ -1,0 +1,247 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  font-family: "Montserrat", sans-serif;
+  background: linear-gradient(#f8ead6, #f9e3c6);
+}
+
+.main-container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+/* Hero Section  */
+
+.hero-section {
+  background-image: url(./Images/hero-image.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100vw;
+  height: 95vh;
+}
+
+/* Our Journey  */
+
+.our-journey {
+  width: 100%;
+  padding: 90px 0;
+  background-color: #f8ead6;
+}
+.our-journey-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+}
+.our-journey-title-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+.heading-sub-title {
+  font-family: "Barlow Semi Condensed", sans-serif;
+  font-size: 13.2px;
+  font-weight: 400;
+  line-height: 26.25px;
+  color: #666666;
+  text-transform: uppercase;
+}
+.heading-title {
+  font-family: "Gilda Display", serif;
+  font-size: 40px;
+  font-weight: 400;
+  line-height: 56.25px;
+  color: #8c5120;
+  text-transform: uppercase;
+}
+.our-journey-para {
+  font-family: "Barlow", sans-serif;
+  font-size: 22px;
+  line-height: 31.3px;
+  font-weight: 400;
+  color: #666666;
+  text-align: center;
+}
+
+/* founder-section  */
+
+.founder-section {
+  padding: 120px 0;
+  width: 100%;
+  position: relative;
+  background: linear-gradient(135deg, #8c5120, #75441b, #75441b, #8c5120);
+}
+.founder-section-wrapper{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 70px   ;
+}
+.founder-content-wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: center; */
+    gap: 50px;
+    max-width: 50%;
+}
+.founder-content-wrapper-top{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: center; */
+    gap: 1rem;
+}
+.founder-sub-title{
+    font-family: "Montserrat", sans-serif;
+    font-size: 1rem;
+    line-height: 26.66px;
+    font-weight: 400;
+    text-transform: uppercase;
+    color: #F9E7D0;
+}
+.founder-content-wrapper-top h3{
+    font-family: "Tenor Sans", sans-serif;
+    font-weight: 400;
+    font-size: 43px;
+    line-height: 47.3px;
+    color: #F9E7D0;
+    text-transform: uppercase;
+}
+.founder-content-wrapper-top p{
+    font-family: "Barlow", sans-serif;
+    font-size: 22px;
+    line-height: 31.3px;
+    font-weight: 400;
+    color: #F8E7CF;
+}
+.founder-btn{
+    font-family: "Montserrat", sans-serif;
+    font-size: 14px;
+    line-height: 14px;
+    font-weight: 400;
+    padding: 23px 35px;
+    max-width: 174px;
+    max-height: 62px;
+    background: transparent;
+    border: 1px solid #F9E7D0;
+    color: #F9E7D0;
+    text-decoration: none;
+}
+.founder-btn:hover {
+    background-color: #F9E7D0;
+    color: #000;
+}
+.founder-image-wrapper{
+    height: 695px;
+    width: 695px;
+}
+.founder-image{
+    height: 100%;
+    width: 100%;
+    background-color: #F9E7D0;
+}
+
+/* Our Team  */
+
+.our-team{
+    width: 100%;
+    position: relative;
+    padding: 100px 0;
+}
+.our-team-wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 73px;
+}
+.our-team-title-wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+.our-team-para{
+  font-family: "Inter", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: #666666;
+}
+.our-team-content-wrapper{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 42px;
+}
+.our-team-card{
+  width: 382px;
+  height: 637px;
+  position: relative;
+}
+.our-team-card-image-wrapper{
+  height: 421px;
+  width: 100%;
+  z-index: 9;
+}
+.our-team-card-image{
+  height: 100%;
+  width: 100%;
+  z-index: 9;
+}
+.our-team-card-content-wrapper{
+  background-color: #76441B;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+  position: relative;
+  z-index: 12;
+}
+.our-team-card-title{
+  font-family: "Poppins", sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  color: #F9E6CC;
+}
+.our-team-card-subtitle{
+  font-family: "Roboto", sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  color: #F9E5CB;
+}
+.our-team-roles{
+ padding: 12px;
+ max-height: 45px;
+ max-width: 216px;
+ background-color: #FFFFFFCC;
+ border: 1px solid #F8E6CD;
+ color: #824B1E;
+ font-family: "Roboto", sans-serif;
+ font-size: 15px;
+ font-weight: 600;
+ position: absolute;
+ top: 20px;
+ left: 20px;
+}
+.color1{
+  background-color: #E5E1E8;
+}
